@@ -22,8 +22,30 @@ int factorial(int n) {
 	return n*factorial(n-1);
 }
 
-int main() {
-	int i=0;
-	cin >> i;
-	cout << factorial(i) << endl;
+#include <iostream>
+using namespace std;
+
+void hanoi(int n, char source, char target, char auxiliary) {
+    if (n == 1) {
+        cout << source << " to " << target << "; ";
+        return;
+    }
+    hanoi(n - 1, source, auxiliary, target);
+    cout << source << " to " << target << "; ";
+    hanoi(n - 1, auxiliary, target, source);
 }
+
+int main() {
+    int n;
+    cout << "请输入汉诺塔的盘子数量: ";
+    cin >> n;
+    hanoi(n, 'A', 'C', 'B');
+    cout << endl;
+    return 0;
+}
+
+//int main() {
+//	int i=0;
+//	cin >> i;
+//	cout << factorial(i) << endl;
+//}
